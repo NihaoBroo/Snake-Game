@@ -1,24 +1,21 @@
 #pragma once
 
-class Board {
-    int width;
-    int height;
+class GameBoard {
+    int boardWidth;
+    int boardHeight;
 
 public:
-    Board(int w, int h); 
-    int GetWidth() const; 
-    int GetHeight() const; 
+    GameBoard(int w, int h); 
+    int Width() const; 
+    int Height() const; 
 };
 
+GameBoard::GameBoard(int w, int h) : boardWidth(w), boardHeight(h) {}
 
-Board::Board(int w, int h) : width(w), height(h) {}
-
-
-int Board::GetWidth() const {
-    return width;
+int GameBoard::Width() const {
+    return boardWidth;
 }
 
-
-int Board::GetHeight() const {
-    return height;
+int GameBoard::Height() const {
+    return boardHeight;
 }
