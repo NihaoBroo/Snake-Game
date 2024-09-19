@@ -7,10 +7,10 @@
 Proiectul reprezintă un joc clasic de tip Snake, în care jucătorul controlează un șarpe care se mișcă pe o tablă. Scopul jocului este de a mânca hrana pentru a crește lungimea șarpelui, evitând în același timp coliziunile cu marginile tabloului sau cu propriul corp. 
 
 ## 3. Regulile Jocului Snake
-1. **Controlul Șarpelui**: Jucătorul poate controla direcția în care se mișcă șarpele (sus, jos, stânga, dreapta).
-2. **Hrana**: Când șarpele mănâncă hrana, acesta crește cu un segment.
-3. **Coliziuni**: Jocul se termină dacă șarpele se lovește de marginea tabloului sau de el însuși.
-4. **Obiectiv**: Jucătorul trebuie să strângă cât mai multă hrană pentru a obține un scor cât mai mare.
+ **Controlul Șarpelui**: Jucătorul poate controla direcția în care se mișcă șarpele (sus, jos, stânga, dreapta).
+ **Hrana**: Când șarpele mănâncă hrana, acesta crește cu un segment.
+ **Coliziuni**: Jocul se termină dacă șarpele se lovește de marginea tabloului sau de el însuși.
+ **Obiectiv**: Jucătorul trebuie să strângă cât mai multă hrană pentru a obține un scor cât mai mare.
 
 ## 4. Tipurile de Date Noi Declarate
 
