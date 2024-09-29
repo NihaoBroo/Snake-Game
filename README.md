@@ -73,7 +73,7 @@ Reprezintă suprafața de joc pe care se desfășoară acțiunea.
 
 ---
 
-## `.gitignore`
+## `.GitIgnore`
 - **CXX:** Specifică compilatorul utilizat, în acest caz `g++`.
 - **CXXFLAGS:** Setează opțiunile de compilare, cum ar fi `-Wall` (pentru a afișa toate avertismentele) și `-std=c++17` (pentru a folosi standardul C++17).
 - **EXEC:** Numele executabilului rezultat.
