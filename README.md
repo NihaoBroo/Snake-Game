@@ -28,7 +28,7 @@ Utilizare: Este utilizată pentru a gestiona mișcarea șarpelui, creșterea ace
 
 ## Funcționalitatea fișierelor `board.hpp`, `snake.hpp`, și `point.hpp`
 
-### `point.hpp`
+### `Point.hpp`
 **Scop:** 
 Definirea unei structuri fundamentale, `Point`, care reprezintă un punct în coordonate bidimensionale, cu axele `x` și `y`. Aceasta ilustrează locația pe tablă a șarpelui, a mărului sau a altor obiecte. Este utilizată pentru stocarea pozițiilor și gestionarea mișcării șarpelui în funcție de coordonatele sale.
 
@@ -40,7 +40,7 @@ Această structură reprezintă o pereche de coordonate `(x, y)` utilizate pentr
 
 ---
 
-### `snake.hpp`
+### `Snake.hpp`
 **Scop:** 
 Reprezintă șarpele și comportamentele sale. Stochează segmentele șarpelui într-un array de tip `Point`, fiecare element corespunzând unei părți din corpul său. Gestionează mișcarea, creșterea atunci când consumă un măr și detectarea coliziunilor.
 
@@ -59,7 +59,7 @@ Inițializează șarpele cu un singur segment plasat la o poziție prestabilită
 
 ---
 
-### `board.hpp`
+### `Board.hpp`
 **Scop:** 
 Reprezintă tabla de joc (zona de acțiune pentru șarpe și mere). Păstrează dimensiunile tablei (lățime și înălțime) și se ocupă de desenarea tablei și a elementelor din interior (șarpele, merele etc.).
 
@@ -84,14 +84,14 @@ Reprezintă suprafața de joc pe care se desfășoară acțiunea.
 
 ---
 
-### `board.cpp`
+### `Board.cpp`
 - **Constructorul `Board(int w, int h)`:** Setează lățimea și înălțimea tablei de joc. Parametrii `w` și `h` definesc dimensiunile tablei de joc.
 - **Funcția `GetWidth()`:** Returnează lățimea tablei de joc, utilă pentru a defini limitele în care șarpele se poate mișca.
 - **Funcția `GetHeight()`:** Returnează înălțimea tablei de joc, asigurându-se că șarpele nu depășește marginile superioare și inferioare ale tablei.
 
 ---
 
-### `snake.cpp`
+### `Snake.cpp`
 - **Constructorul `Snake()`:** Inițializează șarpele la poziția de start (10, 10) și stabilește lungimea inițială a șarpelui la 1 segment.
 - **Funcția `Move()`:** Mută șarpele într-o direcție specificată. Fiecare segment ia poziția segmentului din fața sa, iar capul șarpelui se mișcă în direcția dată de parametrul `direction`.
 - **Funcția `Grow()`:** Adaugă un nou segment la șarpe, extinzând lungimea acestuia. Noul segment va prelua poziția ultimului segment din coadă.
@@ -99,7 +99,7 @@ Reprezintă suprafața de joc pe care se desfășoară acțiunea.
 
 ---
 
-### `point.cpp`
+### `Point.cpp`
 **Scop:** 
 În `point.cpp`, nu este necesar cod suplimentar, deoarece structura `Point` este deja definită în fișierul header `point.hpp`, iar constructorii corespunzători sunt automat generați de compilator pentru structura respectivă.
 
