@@ -1,21 +1,18 @@
 #pragma once
 
 class GameBoard {
-    int boardWidth;
-    int boardHeight;
+  int _width;
+  int _height;
 
 public:
-    GameBoard(int w, int h); 
-    int Width() const; 
-    int Height() const; 
+   Board(int width = 20, int height = 20);
+   Board(const Board& other);
+   int GetWidth() const;
+   int GetHeight() const;
+
+   Board operator = (const Board& other);
+   bool operator == (const Board& other) const;
 };
 
-GameBoard::GameBoard(int w, int h) : boardWidth(w), boardHeight(h) {}
-
-int GameBoard::Width() const {
-    return boardWidth;
-}
-
-int GameBoard::Height() const {
-    return boardHeight;
-}
+std::istream& operator >> (std::istream& in, Board& board);
+std::ostream& operator << (std::ostream& out, const Board& board);
