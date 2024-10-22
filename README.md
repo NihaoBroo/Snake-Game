@@ -1,28 +1,108 @@
-# Snake Game
+# SnakeGame
 
-## 1. Denumirea Proiectului
-**Snake Game**
+## Descrierea proiectului
+SnakeGame este o versiune clasică a jocului retro "Snake", unde jucătorul controlează un șarpe.
 
-## 2. Ce Reprezintă Proiectul
-Proiectul reprezintă un joc clasic de tip Snake, în care jucătorul controlează un șarpe care se mișcă pe o tablă. Scopul jocului este de a mânca hrana pentru a crește lungimea șarpelui, evitând în același timp coliziunile cu marginile tabloului sau cu propriul corp. 
+## Regulile jocului
+Snake este un joc tradițional în care utilizatorul dirijează un șarpe într-un spațiu restrâns. Scopul este de a mânca "mere" (sau alte obiecte) care apar aleatoriu pe tablă. Fiecare măr consumat face ca șarpele să crească, iar jocul devine mai provocator deoarece șarpele nu trebuie să se lovească de pereți sau să se ciocnească singur. Jocul continuă până când jucătorul greșește, iar șarpele este eliminat.
 
-## 3. Regulile Jocului Snake
- Controlul Șarpelui: Jucătorul poate controla direcția în care se mișcă șarpele (sus, jos, stânga, dreapta).
- Hrana: Când șarpele mănâncă hrana, acesta crește cu un segment.
- Coliziuni: Jocul se termină dacă șarpele se lovește de marginea tabloului sau de el însuși.
- Obiectiv: Jucătorul trebuie să strângă cât mai multă hrană pentru a obține un scor cât mai mare.
+## Structura fișierelor
+- **board.hpp, board.cpp, snake.cpp, snake.hpp, point.hpp, point.cpp, .gitignore, Makefile, abstract_painter.hpp, painter.cpp, painter.hpp**
 
-## 4. Tipurile de Date Noi Declarate
+### snake.hpp
+#### Clasa Snake:
+Reprezintă un obiect care conține coordonatele x și y pentru a reprezenta un punct în planul 2D.
 
-### a. `Point`
-Descriere: Structura `Point` reprezintă un punct în coordonatele 2D, având două atribute: `x` și `y`.
-Utilizare: Este folosită pentru a reprezenta pozițiile în spațiul de joc, inclusiv coordonatele capului șarpelui și a segmentelor sale.
+**Atribute:**
+- `Point segments[100]`: segmentele corpului șarpelui, fiecare fiind un obiect Point.
+- `int length`: lungimea curentă a șarpelui.
 
-### b. `Board`
-Descriere: Clasa `Board` definește tabloul în care se desfășoară jocul. Are atribute pentru lățimea (`width`) și înălțimea (`height`) tabloului.
-Utilizare: Este utilizată pentru a stabili dimensiunile jocului și pentru a verifica limitele mișcărilor șarpelui.
+**Constructor:**
+- `Snake()`: inițializează șarpele cu lungimea 1 și poziționează primul segment la (10, 10).
 
-### c. `Snake`
+**Metode:**
+- `void Move(Point direction)`: mută șarpele conform direcției specificate.
+- `void Grow()`: adaugă un segment nou, dacă lungimea este sub 100.
+- `Point GetHeadPosition() const`: returnează poziția capului șarpelui.
+
+### snake.cpp
+- **Constructorul Snake** inițializează lungimea șarpelui la 1 și poziția primului segment la (10, 10).
+
+**Metoda Move** actualizează fiecare segment, iar capul se deplasează conform direcției date.
+
+**Metoda Grow** adaugă un nou segment la sfârșitul șarpelui, menținând aceeași poziție ca ultimul segment existent.
+
+**Metoda GetHeadPosition** returnează poziția capului șarpelui.
+
+### painter.hpp și painter.cpp
+#### Clasa Painter:
+Extinde clasa AbstractPainter și implementează funcționalitatea de desenare a imaginilor și textului.
+
+**Metode:**
+- `void DrawImage(Point topLeft, Point bottomRight, char** image)`: desenează o imagine între cele două puncte.
+- `void WriteText(Point position, char* text)`: afișează textul la coordonatele date.
+
+### abstract_painter.hpp
+#### Clasa AbstractPainter:
+Definirea interfeței pentru clasele care implementează funcționalități de desenare și scriere.
+
+**Metode abstracte:**
+- `virtual void DrawImage(Point topLeft, Point bottomRight, char** image) = 0`: metoda va fi implementată de clasele derivate.
+- `virtual void WriteText(Point position, char* text) = 0`: metoda pentru scrierea textului la coordonatele specificate.
+
+### .gitignore
+- **CXX**: definește compilatorul (g++).
+- **CXXFLAGS**: specifică opțiunile de compilare (ex: -Wall, -std=c++17).
+- **EXEC**: numele executabilului rezultat.
+- **SRC**: fișierele sursă .cpp care trebuie compilate, inclusiv main.cpp pentru punctul de intrare.
+- **OBJ**: fișierele obiect generate.
+
+### Makefile
+- **CXX și CXXFLAGS**: definește compilatorul și opțiunile de compilare.
+- **SRC**: listează fișierele sursă.
+- **OBJ**: generează fișierele obiect.
+- **all**: regula pentru compilarea proiectului.
+- **clean**: regula pentru ștergerea fișierelor obiect și a executabilului.
+
+### point.hpp
+#### Structura Point:
+Conține coordonatele x și y pentru a reprezenta un punct.
+
+**Constructori:**
+- `Point(int _x = 0, int _y = 0)`: inițializează punctul la (0, 0) sau la valorile date.
+- `Point(const Point& other)`: constructor de copiere.
+
+**Operatori:**
+- `operator=`: atribuire între obiecte Point.
+- `operator==`: compară două puncte pentru egalitate.
+
+**Operatori de intrare și ieșire:**
+- `operator>>`: citire din flux.
+- `operator<<`: afișare în flux.
+
+### point.cpp
+- **Constructori** și **Operatori**: inițializare și comparație între puncte.
+- **Operatori de flux**: permite citirea și afișarea coordonatelor.
+
+### board.hpp
+#### Clasa Board:
+Reprezintă tabloul de joc cu lățimea și înălțimea specificate.
+
+**Constructori:**
+- `Board(int width = 20, int height = 20)`: inițializează cu dimensiunile date.
+
+**Metode:**
+- `GetWidth()` și `GetHeight()`: returnează dimensiunile tabloului.
+
+**Operatori:**
+- `operator=`, `operator==`: pentru atribuiri și comparări.
+
+### board.cpp
+- **Constructori și Metode**: inițializare și obținerea dimensiunilor tabloului.
+
+### Concluzie
+Acesta este un proiect simplu, dar eficient, care demonstrează conceptele de bază ale programării orientate pe obiect și implementarea unui joc clasic.
+
 Descriere: Clasa `Snake` reprezintă șarpele din joc, având un tablou de tip `Point` pentru a stoca segmentele corpului său și un atribut pentru lungimea (`length`).
 Utilizare: Este utilizată pentru a gestiona mișcarea șarpelui, creșterea acestuia și obținerea poziției capului.
 
