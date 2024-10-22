@@ -7,9 +7,9 @@ SnakeGame este o versiune clasică a jocului retro "Snake", unde jucătorul cont
 Snake este un joc tradițional în care utilizatorul dirijează un șarpe într-un spațiu restrâns. Scopul este de a mânca "mere" (sau alte obiecte) care apar aleatoriu pe tablă. Fiecare măr consumat face ca șarpele să crească, iar jocul devine mai provocator deoarece șarpele nu trebuie să se lovească de pereți sau să se ciocnească singur. Jocul continuă până când jucătorul greșește, iar șarpele este eliminat.
 
 ## Structura fișierelor
-- **board.hpp, board.cpp, snake.cpp, snake.hpp, point.hpp, point.cpp, .gitignore, Makefile, abstract_painter.hpp, painter.cpp, painter.hpp**
+- **Board.hpp, Board.cpp, Snake.cpp, Snake.hpp, Point.hpp, Point.cpp, .Gitignore, Makefile, Abstract_Painter.hpp, Painter.cpp, Painter.hpp**
 
-### snake.hpp
+### Snake.hpp
 #### Clasa Snake:
 Reprezintă un obiect care conține coordonatele x și y pentru a reprezenta un punct în planul 2D.
 
@@ -25,7 +25,7 @@ Reprezintă un obiect care conține coordonatele x și y pentru a reprezenta un 
 - `void Grow()`: adaugă un segment nou, dacă lungimea este sub 100.
 - `Point GetHeadPosition() const`: returnează poziția capului șarpelui.
 
-### snake.cpp
+### Snake.cpp
 - **Constructorul Snake** inițializează lungimea șarpelui la 1 și poziția primului segment la (10, 10).
 
 **Metoda Move** actualizează fiecare segment, iar capul se deplasează conform direcției date.
@@ -34,7 +34,7 @@ Reprezintă un obiect care conține coordonatele x și y pentru a reprezenta un 
 
 **Metoda GetHeadPosition** returnează poziția capului șarpelui.
 
-### painter.hpp și painter.cpp
+### Painter.hpp și Painter.cpp
 #### Clasa Painter:
 Extinde clasa AbstractPainter și implementează funcționalitatea de desenare a imaginilor și textului.
 
@@ -42,7 +42,7 @@ Extinde clasa AbstractPainter și implementează funcționalitatea de desenare a
 - `void DrawImage(Point topLeft, Point bottomRight, char** image)`: desenează o imagine între cele două puncte.
 - `void WriteText(Point position, char* text)`: afișează textul la coordonatele date.
 
-### abstract_painter.hpp
+### Abstract_Painter.hpp
 #### Clasa AbstractPainter:
 Definirea interfeței pentru clasele care implementează funcționalități de desenare și scriere.
 
@@ -80,11 +80,11 @@ Conține coordonatele x și y pentru a reprezenta un punct.
 - `operator>>`: citire din flux.
 - `operator<<`: afișare în flux.
 
-### point.cpp
+### Point.cpp
 - **Constructori** și **Operatori**: inițializare și comparație între puncte.
 - **Operatori de flux**: permite citirea și afișarea coordonatelor.
 
-### board.hpp
+### Board.hpp
 #### Clasa Board:
 Reprezintă tabloul de joc cu lățimea și înălțimea specificate.
 
@@ -97,7 +97,7 @@ Reprezintă tabloul de joc cu lățimea și înălțimea specificate.
 **Operatori:**
 - `operator=`, `operator==`: pentru atribuiri și comparări.
 
-### board.cpp
+### Board.cpp
 - **Constructori și Metode**: inițializare și obținerea dimensiunilor tabloului.
 
 ### Concluzie
@@ -106,7 +106,7 @@ Acesta este un proiect simplu, dar eficient, care demonstrează conceptele de ba
 Descriere: Clasa `Snake` reprezintă șarpele din joc, având un tablou de tip `Point` pentru a stoca segmentele corpului său și un atribut pentru lungimea (`length`).
 Utilizare: Este utilizată pentru a gestiona mișcarea șarpelui, creșterea acestuia și obținerea poziției capului.
 
-## Funcționalitatea fișierelor `board.hpp`, `snake.hpp`, și `point.hpp`
+## Funcționalitatea fișierelor `Board.hpp`, `Snake.hpp`, și `Point.hpp`
 
 ### `Point.hpp`
 **Scop:** 
