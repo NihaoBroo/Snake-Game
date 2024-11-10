@@ -8,7 +8,7 @@ int GameBoard::Width() const {
 int GameBoard::Height() const {
     return boardHeight;
 }
-Board Board::operator=(const Board &other)
+Board Board::operator=(const Board &other) 
 {
     _width = other.GetWidth();
     _height = other.GetHeight();
