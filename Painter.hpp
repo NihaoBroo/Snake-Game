@@ -7,3 +7,4 @@ public:
     void DrawImage(const Point& topLeft, const Point& bottomRight, char** image) override; 
     void WriteText(const Point& position, const char* text) override;                     
 };
+ 
