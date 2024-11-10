@@ -5,7 +5,7 @@ class GameBoard {
   int _height;
 
 public:
-   Board(int width = 20, int height = 20);
+   Board(int width = 20, int height = 20); 
    Board(const Board& other);
    int GetWidth() const;
    int GetHeight() const;
