@@ -11,3 +11,4 @@ void Painter::WriteText(const Point& position, const char* text)
    std::cout << "Writing text at (" << position.x << ", " << position.y << "): " << text << std::endl;
    
 }
+ 
