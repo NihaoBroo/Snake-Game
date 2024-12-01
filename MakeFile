@@ -1,25 +1,25 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
-# Biblioteci externe
+
 LIBSFML = -lsfml-graphics -lsfml-window -lsfml-system
 LIBSQLITE = -lsqlite3
 LIBBOOST = -lboost_system -lboost_filesystem
 
-# Director biblioteci
+
 LIB_DIR = libs
 LIBS = $(LIB_DIR)/libpoint.a $(LIB_DIR)/libboard.a $(LIB_DIR)/libpainter.a $(LIB_DIR)/libsnake.a
 
-# Director surse și header-e
+
 SRC_DIR = src
 INCLUDE_DIR = include
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
-# Executabil final
+
 EXEC = game
 
-# Compilează bibliotecile statice
+
 $(LIB_DIR)/libpoint.a: $(SRC_DIR)/point.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $(SRC_DIR)/point.o
 	ar rcs $@ $(SRC_DIR)/point.o
