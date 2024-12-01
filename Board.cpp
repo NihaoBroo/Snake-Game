@@ -1,31 +1,34 @@
-#include "gameboard.hpp"
+#include "board.hpp"
 
-GameBoard::GameBoard(int w, int h) : boardWidth(w), boardHeight(h) {}
+GameBoard::GameBoard(int w, int h) : _width(w), _height(h) {}
 
-int GameBoard::Width() const {
-    return boardWidth;
+int GameBoard::GetWidth() const {
+    return _width;
 }
-int GameBoard::Height() const {
-    return boardHeight;
+
+int GameBoard::GetHeight() const {
+    return _height;
 }
-Board Board::operator=(const Board &other) 
-{
+
+GameBoard GameBoard::operator=(const GameBoard& other) {
     _width = other.GetWidth();
     _height = other.GetHeight();
     return *this;
 }
-bool Board::operator==(const Board &other) const
-{
+
+bool GameBoard::operator==(const GameBoard& other) const {
     return GetWidth() == other.GetWidth() && GetHeight() == other.GetHeight();
 }
-std::istream &operator>>(std::istream &in, Board &board)
-{
+
+std::istream& operator>>(std::istream& in, GameBoard& board) {
     int width, height;
     in >> width >> height;
-    board = Board(width, height);
+    board = GameBoard(width, height);
     return in;
 }
-std::ostream &operator<<(std::ostream &out, const Board &board)
-{
+
+std::ostream& operator<<(std::ostream& out, const GameBoard& board) {
     out << board.GetWidth() << " " << board.GetHeight();
     return out;
+}
+
