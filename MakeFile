@@ -1,20 +1,42 @@
 CXX = g++
-
 CXXFLAGS = -Wall -Wextra -std=c++17
 
-EXEC = snake_game
+# Libraries
+LIB_DIR = libs
+LIBS = $(LIB_DIR)/libpoint.a $(LIB_DIR)/libboard.a $(LIB_DIR)/libpainter.a $(LIB_DIR)/libsnake.a
 
-SRC = point.cpp snake.cpp board.cpp main.cpp
-
+# Sources and Headers
+SRC_DIR = src
+INCLUDE_DIR = include
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
-all: $(EXEC)
+# Output Executable
+EXEC = game
 
-$(EXEC): $(OBJ)
-	$(CXX) $(OBJ) -o $(EXEC)
+# Compile Static Libraries
+$(LIB_DIR)/libpoint.a: $(SRC_DIR)/point.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $(SRC_DIR)/point.o
+	ar rcs $@ $(SRC_DIR)/point.o
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(LIB_DIR)/libboard.a: $(SRC_DIR)/board.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $(SRC_DIR)/board.o
+	ar rcs $@ $(SRC_DIR)/board.o
 
+$(LIB_DIR)/libpainter.a: $(SRC_DIR)/painter.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $(SRC_DIR)/painter.o
+	ar rcs $@ $(SRC_DIR)/painter.o
+
+$(LIB_DIR)/libsnake.a: $(SRC_DIR)/snake.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $(SRC_DIR)/snake.o
+	ar rcs $@ $(SRC_DIR)/snake.o
+
+# Main Target
+$(EXEC): $(OBJ) $(LIBS)
+	$(CXX) $(CXXFLAGS) -o $@ $(SRC_DIR)/main.o $(LIBS)
+
+# Clean
 clean:
-	rm -f $(OBJ) $(EXEC)
+	rm -f $(SRC_DIR)/*.o $(LIB_DIR)/*.a $(EXEC)
+
+.PHONY: clean all
