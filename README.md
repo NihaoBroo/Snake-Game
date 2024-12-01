@@ -58,10 +58,4 @@ Acest proiect implementează jocul clasic al șarpelui, cu mai multe module care
   *Rol:*  
   Controlează procesul de construire a aplicației, creând biblioteci statice și legându-le cu fișierul principal. De asemenea, include un script de curățare (clean) care elimină fișierele generate.
 
-## Instrucțiuni de construire și rulare
-
-1. Clonați acest depozit:
-   ```bash
-   git clone <URL-repozitoriu>
-   cd <director-proiect>
 
