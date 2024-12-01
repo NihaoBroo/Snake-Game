@@ -1,18 +1,18 @@
 #pragma once
 
 class GameBoard {
-  int _width;
-  int _height;
+    int _width;
+    int _height;
 
 public:
-   Board(int width = 20, int height = 20); 
-   Board(const Board& other);
-   int GetWidth() const;
-   int GetHeight() const;
+    GameBoard(int width = 20, int height = 20);
+    GameBoard(const GameBoard& other);
+    int GetWidth() const;
+    int GetHeight() const;
 
-   Board operator = (const Board& other);
-   bool operator == (const Board& other) const;
+    GameBoard operator = (const GameBoard& other);
+    bool operator == (const GameBoard& other) const;
 };
 
-std::istream& operator >> (std::istream& in, Board& board);
-std::ostream& operator << (std::ostream& out, const Board& board);
+std::istream& operator >> (std::istream& in, GameBoard& board);
+std::ostream& operator << (std::ostream& out, const GameBoard& board);
