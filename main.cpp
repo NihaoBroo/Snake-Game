@@ -3,7 +3,7 @@
 #include "painter.hpp"
 
 int main() {
-    Board board(20, 20);
+    GameBoard board(20, 20);
     Snake snake;
     Painter painter;
 
