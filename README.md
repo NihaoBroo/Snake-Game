@@ -1,6 +1,3 @@
-# Snake Game - Descrierea proiectului
-
-Acest proiect implementează jocul clasic al șarpelui, cu mai multe module care gestionează logica jocului și redarea graficii pe ecran. Fiecare componentă a jocului este separată într-un fișier dedicat, iar codul este structurat astfel încât să permită o dezvoltare modulară și ușor de întreținut.
 
 # Snake Game  
 
