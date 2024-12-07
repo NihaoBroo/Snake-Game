@@ -51,7 +51,7 @@ Pentru a rula și compila acest proiect, sunt necesare următoarele:
     ```bash
     sudo apt install libsfml-dev
     ```
-  - Instalare pe Windows: Descărcați și configurați biblioteca din [site-ul oficial SFML](https://www.sfml-dev.org).  
+
 - **SQLite3**:  
   - Utilizată pentru salvarea scorurilor maxime.  
   - Instalare pe Linux:  
