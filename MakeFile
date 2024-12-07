@@ -45,3 +45,14 @@ clean:
 	rm -f $(SRC_DIR)/*.o $(LIB_DIR)/*.a $(EXEC)
 
 .PHONY: clean all
+
+
+TEST_SRC = $(wildcard tests/*.cpp)
+TEST_OBJ = $(TEST_SRC:.cpp=.o)
+
+tests: $(TEST_OBJ) $(LIBS)
+	$(CXX) $(CXXFLAGS) -o tests.out $(TEST_OBJ) $(LIBS)
+	./tests.out
+
+clean-tests:
+	rm -f tests/*.o tests.out
