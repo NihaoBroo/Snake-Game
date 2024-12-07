@@ -10,31 +10,78 @@ Acest proiect este o oportunitate excelentă de a învăța despre programarea o
 
 ---
 
-## Regulile Jocului  
-1. **Obiectivul**: Controlează șarpele pentru a consuma cât mai multă mâncare și a obține un scor maxim.  
-2. **Mișcarea**: Șarpele se mișcă continuu într-o direcție. Poți schimba direcția folosind tastele săgeată.  
-3. **Creșterea**: De fiecare dată când șarpele mănâncă, lungimea acestuia crește.  
-4. **Condiții de terminare**: Jocul se termină dacă:
-   - Șarpele lovește marginea tablei.  
-   - Șarpele lovește propriul corp.  
 
-Punctele obținute sunt afișate în timp real pe ecran, iar scorul maxim este salvat într-un fișier sau o bază de date.  
+## **Descrierea regulilor jocului**
 
----
+Jocul **Snake** presupune controlul unui șarpe care se deplasează pe o tablă pătrată. Obiectivul principal este să ghidezi șarpele să mănânce "fructe", crescându-i lungimea, fără ca acesta să se ciocnească de margini sau de propriul corp.
 
-## Structura Proiectului  
-Proiectul este organizat în module independente, fiecare având un rol bine definit:  
-- **`Point`**: Reprezintă coordonatele pe tabla de joc.  
-- **`GameBoard`**: Definește dimensiunile tablei de joc.  
-- **`Snake`**: Gestionează logica mișcării și creșterii șarpelui.  
-- **`Painter`**: Este responsabil pentru afișarea grafică a elementelor jocului.  
-- **`AbstractPainter`**: O interfață abstractă pentru implementarea diferitelor moduri de redare grafică.  
-- **`main.cpp`**: Punctul de intrare al aplicației, care integrează toate modulele și inițializează jocul.  
+### **Condiții de terminare a jocului:**
+1. Șarpele se lovește de marginea tablei.
+2. Șarpele își intersectează propriul corp.
+
+### **Reguli de bază:**
+- Șarpele începe cu o lungime minimă și este poziționat în centrul tablei.
+- La fiecare fruct mâncat, șarpele crește cu o unitate în lungime.
+- Mișcarea șarpelui este continuă, iar direcția poate fi schimbată folosind tastele săgeți (sus, jos, stânga, dreapta).
+
+### **Scor:**
+- Fiecare fruct mâncat adaugă un punct la scorul total.
+- Jocul înregistrează cel mai mare scor obținut într-o sesiune.
 
 ---
 
-## Dependențe  
-Pentru a rula și compila acest proiect, sunt necesare următoarele:  
+## **Structura proiectului**
+
+Proiectul este organizat într-un mod modular, utilizând următoarele fișiere și directoare:
+
+### **1. Module principale:**
+- **Snake**:
+  - Gestionează poziția și mișcarea șarpelui.
+  - Se ocupă de creșterea șarpelui după consumarea unui fruct.
+
+- **Board**:
+  - Definește dimensiunile și limitele tablei de joc.
+
+- **Painter**:
+  - Redă grafic elementele jocului (șarpele, fructele, mesajele).
+
+- **Point**:
+  - Reprezintă un punct în coordonate 2D `(x, y)`, utilizat pentru poziționarea obiectelor.
+
+### **2. Teste unitare:**
+Directorul `tests` conține teste unitare pentru clasele cheie:
+- `PointTest.cpp`: Testează funcționalitățile clasei `Point`.
+- `SnakeTest.cpp`: Testează logica mișcării și creșterii șarpelui.
+- `GameBoardTest.cpp`: Verifică dimensiunile și funcționalitățile tablei de joc.
+
+---
+
+## **Dependențele proiectului**
+
+Proiectul utilizează următoarele dependențe și unelte:
+
+### **Mediu de dezvoltare:**
+- **Sistem de operare:** Linux/Windows/MacOS
+- **Compilator:** GCC/G++ cu suport pentru standardul C++17 sau mai nou
+
+### **Biblioteci terțe:**
+1. **SFML:** Pentru redarea graficii și gestionarea evenimentelor (opțional în extensii viitoare).  
+   **Componente:**
+   - `sfml-graphics`
+   - `sfml-window`
+   - `sfml-system`
+2. **SQLite3:** Pentru salvarea și încărcarea scorurilor (opțional).
+3. **Boost:** Pentru manipularea fișierelor și alte operații auxiliare.
+
+---
+
+Acest fișier README.md oferă o descriere detaliată a jocului, structura proiectului și specificațiile tehnice necesare pentru a rula aplicația.
+
+---
+
+ 
+
+
 
 ### Mediu de Dezvoltare  
 - **Sistem de operare**: Compatibil cu Windows, Linux sau macOS.  
