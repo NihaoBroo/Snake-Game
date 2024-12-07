@@ -67,10 +67,4 @@ Pentru a rula și compila acest proiect, sunt necesare următoarele:
 
 ---
 
-## Cum să Construiești și să Rulezi Aplicația  
 
-### Pasul 1: Clonarea Repozitoriului  
-Clonează proiectul din GitHub:  
-```bash
-git clone <repository-url>
-cd snake-game
