@@ -2,60 +2,75 @@
 
 Acest proiect implementează jocul clasic al șarpelui, cu mai multe module care gestionează logica jocului și redarea graficii pe ecran. Fiecare componentă a jocului este separată într-un fișier dedicat, iar codul este structurat astfel încât să permită o dezvoltare modulară și ușor de întreținut.
 
-## Structura fișierelor
+# Snake Game  
 
-- **src/snake.cpp** și **include/snake.hpp**  
-  *Modificări:*  
-  Fără schimbări semnificative, dar acum este compilat într-o bibliotecă statică `libsnake.a`.  
-  *Rol:*  
-  Se ocupă cu logica mișcării șarpelui, creșterea acestuia și plasarea pe tabla de joc.
+## Descrierea Proiectului  
+Acest proiect implementează o versiune clasică a jocului Snake, utilizând un design modular și orientat pe obiect. Scopul jocului este să controlezi șarpele astfel încât să consume mâncare și să evite coliziunile cu propriul corp sau cu marginile tablei.  
 
-- **src/painter.cpp** și **include/painter.hpp**  
-  *Modificări:*  
-  Acest modul servește ca interfață între logica jocului și redarea graficii (de exemplu, desenarea șarpelui sau afișarea textului). Este compilat într-o bibliotecă statică `libpainter.a`.  
-  *Rol:*  
-  Responsabil de redarea grafică a jocului pe ecran, folosind metode virtuale din `AbstractPainter`.
+Proiectul este scris în C++ și utilizează mai multe module pentru gestionarea logicii jocului, a elementelor grafice, și a interacțiunilor utilizatorului. Arhitectura jocului este construită pentru a fi scalabilă și ușor de întreținut.  
 
-- **.gitignore**  
-  *Modificări:*  
-  Au fost adăugate reguli pentru a ignora fișierele generate automat, cum ar fi fișierele obiect (*.o), bibliotecile statice și dinamice (*.a, *.so), și executabilele (*.exe, *.out).  
-  *Rol:*  
-  Evită includerea fișierelor temporare și inutile în controlul versiunii.
+Acest proiect este o oportunitate excelentă de a învăța despre programarea orientată pe obiecte, gestionarea memoriei în C++, și integrarea cu biblioteci externe pentru redare grafică.  
 
-- **src/point.cpp** și **include/point.hpp**  
-  *Modificări:*  
-  La fel ca și în cazul altor module, codul acestei clase este compilat într-o bibliotecă statică `libpoint.a`.  
-  *Rol:*  
-  Gestionează coordonatele (punctele) din joc, esențiale pentru poziționarea șarpelui și a elementelor pe tabla de joc.
+---
 
-- **src/board.cpp** și **include/board.hpp**  
-  *Modificări:*  
-  Compilat într-o bibliotecă statică `libboard.a`, similar cu modulul `point`.  
-  *Rol:*  
-  Definește dimensiunile tablei de joc și oferă cadrul necesar pentru plasarea obiectelor.
+## Regulile Jocului  
+1. **Obiectivul**: Controlează șarpele pentru a consuma cât mai multă mâncare și a obține un scor maxim.  
+2. **Mișcarea**: Șarpele se mișcă continuu într-o direcție. Poți schimba direcția folosind tastele săgeată.  
+3. **Creșterea**: De fiecare dată când șarpele mănâncă, lungimea acestuia crește.  
+4. **Condiții de terminare**: Jocul se termină dacă:
+   - Șarpele lovește marginea tablei.  
+   - Șarpele lovește propriul corp.  
 
-- **main.cpp**  
-  *Modificări:*  
-  Este un script principal care integrează toate modulele, inclusiv `Board`, `Snake`, și `Painter`. Este punctul de intrare al aplicației.  
-  *Rol:*  
-  Permite utilizatorului să testeze și să construiască logica jocului.
+Punctele obținute sunt afișate în timp real pe ecran, iar scorul maxim este salvat într-un fișier sau o bază de date.  
 
-- **abstract_painter.hpp**  
-  *Modificări:*  
-  În interfața `AbstractPainter`, tipurile de date `char*` au fost înlocuite cu `std::string`, iar `char**` cu `std::vector<std::string>`, în conformitate cu convențiile noi din STL.  
-  *Rol:*  
-  Definește o interfață abstractă pentru desenarea textului și imaginilor. Clasele derivate, cum ar fi `Painter`, trebuie să implementeze aceste metode.
+---
 
-- **src/painter.cpp** și **include/painter.hpp**  
-  *Modificări:*  
-  Am înlocuit `char*` cu `std::string` pentru o manipulare mai sigură și convenabilă a textelor. În metoda `DrawImage`, am folosit `std::vector<std::string>` în loc de `char**`, facilitând manipularea imaginilor și eliminând necesitatea gestionării manuale a memoriei.  
-  *Rol:*  
-  Clasa `Painter` este responsabilă pentru redarea elementelor jocului și afișarea textelor pe tablă.
+## Structura Proiectului  
+Proiectul este organizat în module independente, fiecare având un rol bine definit:  
+- **`Point`**: Reprezintă coordonatele pe tabla de joc.  
+- **`GameBoard`**: Definește dimensiunile tablei de joc.  
+- **`Snake`**: Gestionează logica mișcării și creșterii șarpelui.  
+- **`Painter`**: Este responsabil pentru afișarea grafică a elementelor jocului.  
+- **`AbstractPainter`**: O interfață abstractă pentru implementarea diferitelor moduri de redare grafică.  
+- **`main.cpp`**: Punctul de intrare al aplicației, care integrează toate modulele și inițializează jocul.  
 
-- **Makefile**  
-  *Modificări:*  
-  Procesul de construire a fost modularizat astfel încât fiecare componentă (Point, Board, Painter, Snake) să fie compilată într-o bibliotecă statică (.a).  
-  *Rol:*  
-  Controlează procesul de construire a aplicației, creând biblioteci statice și legându-le cu fișierul principal. De asemenea, include un script de curățare (clean) care elimină fișierele generate.
+---
 
+## Dependențe  
+Pentru a rula și compila acest proiect, sunt necesare următoarele:  
 
+### Mediu de Dezvoltare  
+- **Sistem de operare**: Compatibil cu Windows, Linux sau macOS.  
+- **Compilator**: `g++` cu suport pentru standardul C++17 sau mai recent.  
+- **Instrumente**: Make pentru automatizarea construirii.  
+
+### Biblioteci Externe  
+- **SFML**:  
+  - Utilizată pentru redarea grafică și gestionarea ferestrelor.  
+  - Instalare pe Linux:  
+    ```bash
+    sudo apt install libsfml-dev
+    ```
+  - Instalare pe Windows: Descărcați și configurați biblioteca din [site-ul oficial SFML](https://www.sfml-dev.org).  
+- **SQLite3**:  
+  - Utilizată pentru salvarea scorurilor maxime.  
+  - Instalare pe Linux:  
+    ```bash
+    sudo apt install libsqlite3-dev
+    ```
+- **Boost**:  
+  - Funcționalități adiționale pentru manipularea fișierelor și sistemelor.  
+  - Instalare pe Linux:  
+    ```bash
+    sudo apt install libboost-all-dev
+    ```
+
+---
+
+## Cum să Construiești și să Rulezi Aplicația  
+
+### Pasul 1: Clonarea Repozitoriului  
+Clonează proiectul din GitHub:  
+```bash
+git clone <repository-url>
+cd snake-game
